@@ -1,0 +1,196 @@
+@import "./mixin.module.scss";
+@import "./partials.scss";
+
+.sidebar {
+    position: fixed;
+    width: 280px;
+    top: 0;
+    left: 0;
+    // background-color: $light-gray;
+    height: 100%;
+    transition: 0.5s;
+    padding: 12px 10px 0px 10px;
+    z-index: 99;
+  
+    .sidebar_wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: $primary-color;
+      border-radius: 10px 10px 0px 0px;
+  
+  
+      // SideBar Top
+  
+      .sidebartop {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 20px 5px 20px 20px;
+        .horizontalclose {
+          display: none;
+        }
+        .closelogo {
+          position: absolute;
+          right: 20px;
+          top: 26px;
+          @include closeBtn;
+          @include allCenter;
+          display: none;
+  
+          @media screen and (max-width: 890px) {
+            display: block;
+          }
+        }
+  
+        .sidebarLogo {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+  
+        img {
+          width: 100%;
+          height: 100%;
+          white-space: nowrap;
+        }
+  
+        span {
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: $white;
+          white-space: nowrap;
+          text-transform: capitalize;
+        }
+      }
+  
+      // SideBar Bottom
+  
+      .sidebarbottom {
+        display: flex;
+        flex-direction: column;
+        color: white;
+  
+        .sidebarmenu {
+          list-style: none;
+  
+          a {
+            margin: 2px 0px;
+            padding: 6px 12px;
+            display: flex;
+            justify-content: space-between;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+  
+            &:hover {
+              background: rgb(45, 51, 89);
+              border-left: 3px solid $white;
+            }
+  
+            li {
+              @include verticallycenter;
+              text-decoration: none;
+              color: $white;
+            }
+  
+            .sidebarIcon {
+              margin: 0px 10px;
+  
+              svg {
+                font-size: 1.8rem;
+              }
+            }
+  
+            .sidebarText {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  
+    @media screen and (max-width: 900px) {
+      left: -300px;
+      padding: 12px 3px 0px 10px;
+    }
+    @media screen and (max-width: 400px) {
+      width: 250px;
+    }
+  }
+  /* Active */
+.sidebarActive {
+    width: 80px;
+  
+    .sidebartop {
+      padding: 20px 0px 20px 15px !important;
+      display: block !important;
+    }
+  
+    .sidebartop > span {
+      transform: 0.2s;
+      display: none;
+    }
+  
+    .sidebarIcon {
+      margin: 0px 10px;
+  
+      svg {
+        font-size: 1.8rem;
+      }
+    }
+  
+    .sidebarmenu {
+      .sidebarText {
+        position: absolute;
+        background-color: $primary-color;
+        padding: 6px;
+        border-radius: 5px;
+        left: 103%;
+        transform: scale(0) translateX(-20px);
+      }
+  
+      a:hover .sidebarText {
+        transform: scale(1) translateX(0px);
+        transition: 0.1s ease;
+      }
+    }
+  
+    @media screen and (max-width: 900px) {
+      left: 0px;
+      width: 280px;
+  
+      .sidebartop > span {
+        display: block;
+      }
+  
+      .sidebartop {
+        padding: 20px 5px 20px 20px;
+        display: flex !important;
+      }
+  
+      .sidebarText {
+        transform: scale(1) translateX(0px) !important;
+        position: relative !important;
+        background-color: transparent !important;
+        padding: 6px !important;
+        left: 0 !important;
+      }
+  
+      .sidebarIcon svg {
+        font-size: 2rem;
+      }
+  
+      .sidebarmenu > li {
+        padding: 0px;
+      }
+  
+      .dropdownIcon {
+        display: block;
+      }
+    }
+  }

@@ -1,0 +1,73 @@
+@mixin allCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin horizontalcenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin verticallycenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin horizontallysapce {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin positions($position, $top, $bottom, $left, $right) {
+  position: $position;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+}
+
+@mixin button($padding, $border-radius) {
+  padding: $padding;
+  border-radius: $border-radius;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background-color: $primary-color;
+  color: $white;
+  cursor: pointer;
+}
+
+@mixin input($padding) {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 0.5px solid #555;
+  padding: $padding;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  font-family: GothamBook;
+}
+@mixin closeBtn {
+  width: 25px;
+  height: 25px;
+  background-color: $white;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.125);
+  @include allCenter;
+  padding: 3px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 50;
+  transition: 0.3s ease;
+  svg {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    color: $primary-color;
+  }
+  &:hover svg {
+    transform: rotate(360deg);
+    transition: transform 0.3s ease;
+    color: $red;
+  }
+}

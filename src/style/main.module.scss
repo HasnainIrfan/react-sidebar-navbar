@@ -1,0 +1,37 @@
+@import "./mixin.module.scss";
+@import "./partials.scss";
+
+.main_container {
+  position: relative;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  background-color: $light-gray;
+  .main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    transition: 0.5s;
+    height: 300px;
+    background-color: $light-gray;
+    // background-color: red;
+    overflow: hidden;
+  }
+
+  .mainActive {
+    position: relative;
+    width: calc(100% - 100px);
+    left: 100px;
+  }
+  @media screen and (max-width: 900px) {
+    .main {
+      width: 100%;
+      left: 0;
+    }
+
+    .mainActive {
+      left: 0px !important;
+    }
+  }
+}

@@ -1,0 +1,218 @@
+@import "./mixin.module.scss";
+@import "./partials.scss";
+
+.navbar {
+  position: relative;
+  width: calc(100% - 300px);
+  top: 0;
+  left: 300px;
+  transition: 0.5s;
+  z-index: 98;
+  background-color: $light-gray;
+
+  .navbar_wrapper {
+    @include horizontallysapce;
+    padding: 10px;
+    @media screen and (max-width: 400px) {
+      flex-direction: column;
+      gap: 12px;
+      align-items: inherit;
+    }
+  }
+
+  .NavbarLeft {
+    @include verticallycenter;
+
+    h3 {
+      border-left: 3px solid #333;
+      color: $primary-color;
+      font-size: 1.2rem;
+      padding-left: 10px;
+      text-transform: capitalize;
+    }
+  }
+
+  .NavbarRight {
+    position: relative;
+    @include verticallycenter;
+    @media screen and (max-width: 400px) {
+      justify-content: end;
+    }
+  }
+
+  .NavbarRight_items {
+    position: relative;
+    @include verticallycenter;
+    margin-right: 20px;
+    border-radius: 100%;
+    h5 {
+      border-radius: 100%;
+      background-color: $primary-color;
+      color: $white;
+      text-transform: uppercase;
+      width: 35px;
+      height: 35px;
+      @include allCenter;
+      cursor: pointer;
+      box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.425);
+    }
+    .SubMenu {
+      position: absolute;
+      top: 43px;
+      left: -50px;
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.425);
+      border-radius: 3px;
+      transition: 0.1s ease;
+      transform-origin: top right;
+      transform: scale(0);
+      ul {
+        list-style-type: none;
+        padding: 10px;
+        a {
+          li {
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: system-ui;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.125);
+            }
+          }
+        }
+      }
+    }
+    .SubMenuActive {
+      transform: scale(1);
+    }
+  }
+
+  .icon {
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .NavbarRight_items:nth-child(1) {
+    animation: updown 1s ease infinite;
+    padding: 5px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.125);
+    }
+  }
+
+  @keyframes updown {
+    0% {
+      transform: translateY(-1px);
+    }
+
+    50% {
+      transform: translateY(1px);
+    }
+
+    100% {
+      transform: translateY(-1px);
+    }
+  }
+
+  .NavbarRight_items:nth-child(2) {
+    animation: leftright 1s ease infinite;
+    padding: 4px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.125);
+    }
+  }
+
+  @keyframes leftright {
+    0% {
+      transform: translateX(-1px);
+    }
+
+    50% {
+      transform: translateX(1px);
+    }
+
+    100% {
+      transform: translateX(-1px);
+    }
+  }
+
+  .Counter {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 8px;
+    border: 1px solid #fff;
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .menu {
+    position: absolute;
+    top: 40px;
+    z-index: 100;
+    background-color: $white;
+    padding: 12px;
+    left: -20px;
+
+    ul {
+      list-style: none;
+
+      li {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    left: 0;
+  }
+}
+
+// Navbar Active
+.navbarActive {
+  width: calc(100% - 100px);
+  left: 100px;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    left: 0;
+  }
+}
+.notificationIconActive {
+  color: rgb(2, 37, 194);
+  background-color: rgba(0, 119, 255, 0.125);
+}
+.navbarSticky {
+  position: fixed;
+  animation: stickyNavbar 0.3s;
+  box-shadow: 10px 0px 5px 1px rgba(0, 0, 0, 0.425);
+  top: 0;
+}
+@keyframes stickyNavbar {
+  0% {
+    top: -100px;
+  }
+
+  100% {
+    top: 0;
+  }
+}

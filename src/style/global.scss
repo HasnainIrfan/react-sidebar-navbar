@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import "./mixin.module.scss";
+@import "./partials.scss";
+
+// Alert Message
+
+.loginAlertError,
+.loginAlertSuccess {
+  position: fixed;
+  box-shadow: 0px 0px 4px #333 !important;
+  right: 6px;
+  top: -90px;
+  background-color: $white !important;
+  border-radius: 5px;
+  font-family: GothamBook !important;
+  animation: alert 2s ease-out;
+  z-index: 200;
+  div:nth-child(2) {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-color: $success-color;
+    bottom: 0;
+    right: 0;
+    transform-origin: left;
+    border-radius: 0px 6px 6px 0px;
+    animation: line 2s ease;
+  }
+  @keyframes line {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+}
+@keyframes alert {
+  5% {
+    transform: translateY(106px);
+  }
+  6% {
+    transform: translateY(100px);
+  }
+  99% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.loginAlertSuccess {
+  border-left: 6px solid $success-color;
+}
+.loginAlertError {
+  border-left: 6px solid red;
+  div:nth-child(1) {
+    color: red !important;
+  }
+  &:before {
+    background-color: red;
+  }
+}
+
+// Not Found Pages
+
+.notfound {
+  width: 100%;
+  background-color: $white;
+  user-select: none;
+
+  .notfound_wrapper {
+    max-width: 1140px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    @include allCenter;
+    flex-direction: column;
+    max-height: 100%;
+    min-height: 100vh;
+    text-align: center;
+    .notfound_box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      // background-color: #666;
+      overflow: hidden;
+      @include allCenter;
+      padding: 10px;
+      .notfound_image {
+        width: 850px;
+        height: 600px;
+        background-color: #333;
+        position: relative;
+        top: 160px;
+        user-select: none;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+        .notfound_text {
+          position: absolute;
+          width: 100%;
+          top: -220px;
+          h1 {
+            font-size: 15rem;
+            font-weight: 700;
+            letter-spacing: 12px;
+            color: $light-gray-color;
+            font-family: monospace;
+          }
+          span {
+            position: relative;
+            top: -20px;
+            color: $primary-color;
+            font-size: 2.6rem;
+            font-weight: 600;
+          }
+          @media screen and (max-width: 600px) {
+            h1 {
+              font-size: 12rem;
+            }
+            span {
+              font-size: 2rem;
+            }
+          }
+          @media screen and (max-width: 400px) {
+            top: -120px;
+
+            h1 {
+              font-size: 8rem;
+            }
+            span {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+      .notfound_button {
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        button {
+          @include button(10px 40px, 5px);
+          font-size: 1rem;
+          font-weight: 600;
+          // border-radius: 30px 0px 0px 30px;
+        }
+      }
+    }
+  }
+}
+
+.notfound_dark{
+  background-color: $dark;
+}
+
+// HandburgerMenu
+.handburgerMenu {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 20px;
+  @include horizontalcenter;
+  flex-direction: column;
+
+  .bar {
+    width: 20px;
+    height: 2px;
+    border-radius: 10px;
+    background-color: #333;
+    transition: 0.5s transform ease;
+  }
+
+  .bar:nth-child(1) {
+    width: 25px;
+    transform: translateY(-5px);
+  }
+
+  .bar:nth-child(3) {
+    width: 25px;
+    transform: translateY(5px);
+  }
+}
+
+.handburgerActive {
+  .bar {
+    width: 25px;
+    height: 2px;
+    background-color: #333;
+  }
+
+  .bar:nth-child(1) {
+    transform: translateY(2px) rotate(45deg);
+  }
+
+  .bar:nth-child(2) {
+    scale: 0;
+  }
+
+  .bar:nth-child(3) {
+    transform: translateY(-2px) rotate(-45deg);
+  }
+}
+
+// Select
+
+.select_Input {
+  position: relative;
+  width: 100%;
+
+  select {
+    position: relative;
+    width: 100%;
+    outline: none;
+    border: 0.8px solid #bdbaba;
+    border-radius: 5px;
+    box-shadow: -4.973px 0.523px 5.82px 0.18px rgba(2, 29, 59, 0.11);
+    padding: 6px;
+    color: #111;
+    font-size: 1rem;
+    background-color: $white;
+    margin: 5px 0px;
+
+    &:focus {
+      outline: none;
+    }
+    option {
+      overflow-y: auto;
+      font-size: 0.95rem;
+    }
+  }
+  .inputError {
+    color: red;
+    font-size: 0.9rem;
+  }
+  .selectActive {
+    border-width: 1px 10px 1px 1px !important;
+    border-style: solid;
+    border-color: rgb(219, 18, 88) rgb(191, 22, 80) rgb(191, 22, 80)
+      rgb(236, 89, 144) !important ;
+  }
+}
+
+// Close button
+.closeButton {
+  @include closeBtn;
+}
